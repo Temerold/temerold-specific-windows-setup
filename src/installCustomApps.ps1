@@ -1,6 +1,6 @@
 ### Install custom apps with WinGet
 
-$silent = $true  # Set to `$false` to disable silent mode
+$silent = $true # Set to `$false` to disable silent mode
 
 # Check if WinGet is installed
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
