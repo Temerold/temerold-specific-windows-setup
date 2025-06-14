@@ -28,11 +28,11 @@ ForEach ($volume in $volumes) {
 
     if ($currentLetter -ne $volume['Letter']) {
         Set-Partition -DriveLetter $currentLetter -NewDriveLetter $volume['Letter']
-        Write-Output "Changed volume $( $volume['DeviceId'] ) letter from $currentLetter to $( $volume['Letter'] )"
+        Write-Host "Changed volume $( $volume['DeviceId'] ) letter from $currentLetter to $( $volume['Letter'] )"
     }
 
     if ($currentLabel -ne $volume['Label']) {
         Set-Volume -UniqueId $volumeInstance.DeviceID -NewFileSystemLabel $volume['Label']
-        Write-Output "Changed volume $( $volume['DeviceId'] ) label from $currentLabel to $( $volume['Label'] )"
+        Write-Host "Changed volume $( $volume['DeviceId'] ) label from $currentLabel to $( $volume['Label'] )"
     }
 }

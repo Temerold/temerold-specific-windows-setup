@@ -63,7 +63,7 @@ foreach ($app in $apps) {
         $appId = $app
         $additionalWinGetArgs = @()
     }
-    Write-Output "Installing: $appId..."
+    Write-Host "Installing: $appId..."
 
     $winGetArgs = @(
         'install',
@@ -78,5 +78,5 @@ foreach ($app in $apps) {
     winget @winGetArgs
 
     if ($LASTEXITCODE -ne 0) { Write-Error "Failed to install: $appId" }
-    else { Write-Output "Successfully installed: $appId" }
+    else { Write-Host "Successfully installed: $appId" }
 }
