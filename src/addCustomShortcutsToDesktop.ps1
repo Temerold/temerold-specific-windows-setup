@@ -7,28 +7,51 @@ if ($PSVersionTable.PSVersion.Major -lt 7) {
 }
 
 $desktopPath = [System.Environment]::GetFolderPath('Desktop')
-$lagringPath = 'S:'
+$lagringPath = 'S:\'
 $lagringShortcuts = @(
-    @{ Name = 'Lagring'; Target = $lagringPath },
-    @{ Name = 'Program'; Target = "$lagringPath\Program" },
-    @{ Name = 'Dokument'; Target = "$lagringPath\Dokument" },
-    @{ Name = 'Böcker'; Target = "$lagringPath\Böcker" },
-    @{ Name = 'Musik'; Target = "$lagringPath\Musik" },
-    @{ Name = 'Film'; Target = "$lagringPath\Film" },
-    @{ Name = 'Memes'; Target = "$lagringPath\Memes" },
-    @{ Name = 'Bilder'; Target = "$lagringPath\Bilder" },
-    @{ Name = 'Övrigt'; Target = "$lagringPath\Övrigt" }
+    @{  Name   = 'Lagring'
+        Target = $lagringPath 
+    },
+    @{  Name   = 'Program'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Program'
+    },
+    @{  Name   = 'Dokument'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Dokument'
+    },
+    @{  Name   = 'Böcker'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Böcker'
+    },
+    @{  Name   = 'Musik'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Musik'
+    },
+    @{  Name   = 'Film'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Film'
+    },
+    @{  Name   = 'Memes'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Memes'
+    },
+    @{  Name   = 'Bilder'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Bilder'
+    },
+    @{  Name   = 'Övrigt'
+        Target = Join-Path -Path $lagringPath -ChildPath 'Övrigt'
+    }
 )
 
 foreach ($shortcut in $lagringShortcuts) {
-    $shortcutPath = Join-Path -Path $desktopPath -ChildPath "$( $shortcut.Name ).lnk"
-    Write-Output "Processing shortcut: $( $shortcut.Name ) -> $( $shortcut.Target )"
-    if (-not (Test-Path -Path $shortcutPath)) {
-        $WshShell = New-Object -ComObject WScript.Shell
-        $shortcutObject = $WshShell.CreateShortcut($shortcutPath)
-        $shortcutObject.TargetPath = $shortcut.Target
-        $shortcutObject.Save()
-        Write-Output "Created shortcut: $( $shortcut.Name ) -> $( $shortcut.Target )"
+    $WshShell = New-Object -ComObject WScript.Shell
+    $shortcutPath = Join-Path -Path $desktopPath -ChildPath "$($shortcut.Name).lnk"
+    $shortcutObject = $WshShell.CreateShortcut($shortcutPath)
+
+    # Continue if the shortcut already exists with the same target
+    if ((Test-Path -Path $shortcutPath) -and ($shortcutObject.TargetPath -eq $shortcut.Target)) {
+        Write-Output "Shortcut already exists: $( $shortcut.Name ) -> $( $shortcut.Target )"
+        continue
     }
-    else { Write-Output "Shortcut already exists: $( $shortcut.Name )" }
+
+    # Create or overwrite the shortcut
+    $shortcutObject.TargetPath = $shortcut.Target
+    $shortcutObject.Save()
+
+    Write-Output "Created shortcut: $( $shortcut.Name ) -> $( $shortcut.Target )"
 }
