@@ -39,7 +39,7 @@ $lagringShortcuts = @(
 )
 
 foreach ($shortcut in $lagringShortcuts) {
-    $WshShell = New-Object -ComObject WScript.Shell
+    $WshShell = New-Object -ComObject 'WScript.Shell'
     $shortcutPath = Join-Path -Path $desktopPath -ChildPath "$($shortcut.Name).lnk"
     $shortcutObject = $WshShell.CreateShortcut($shortcutPath)
 
