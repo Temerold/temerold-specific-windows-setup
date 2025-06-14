@@ -1,16 +1,16 @@
 ### Disable startup processes
 
 $runKeys = @(
-    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run",
-    "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run",
-    "HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Run"
+    'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run',
+    'HKLM:\Software\Microsoft\Windows\CurrentVersion\Run',
+    'HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Run'
 )
 
 foreach ($key in $runKeys) {
     try {
         $processes = Get-ItemProperty -Path $key
         foreach ($property in $processes.PSObject.Properties) {
-            if ($property.Name -in @("PSPath", "PSParentPath", "PSChildName", "PSDrive", "PSProvider")) { continue }
+            if ($property.Name -in @('PSPath', 'PSParentPath', 'PSChildName', 'PSDrive', 'PSProvider')) { continue }
             try {
                 Remove-ItemProperty -Path $key -Name $property.Name
                 Write-Output "Disabled startup process: $( $property.Name )"
