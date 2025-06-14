@@ -76,7 +76,6 @@ foreach ($app in $apps) {
     if ($silent) { $winGetArgs += '--silent' }
 
     winget @winGetArgs
-    Write-Output @winGetArgs
 
     if ($LASTEXITCODE -ne 0) { Write-Error "Failed to install: $appId" }
     else { Write-Output "Successfully installed: $appId" }
