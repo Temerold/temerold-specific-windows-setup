@@ -46,7 +46,7 @@ $apps = @(
     'Python.Python.3.13',
     'qBittorrent.qBittorrent',
     'RARLab.WinRAR',
-    'Spotify.Spotify',
+    @('Spotify.Spotify', '--nonadmin'),
     'undergroundwires.privacy.sexy',
     'Valve.Steam',
     'VideoLAN.VLC',
