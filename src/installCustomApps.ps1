@@ -1,6 +1,9 @@
 ### Install custom apps with WinGet
 
-$silent = $true # Set to `$false` to disable silent mode
+param (
+    # Don't install apps silently
+    [switch] $loud = $false
+)
 
 # Check if WinGet is installed
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
@@ -73,7 +76,7 @@ foreach ($app in $apps) {
         '--accept-package-agreements',
         '--verbose-logs'
     ) + $additionalWinGetArgs
-    if ($silent) { $winGetArgs += '--silent' }
+    if (-not $loud) { $winGetArgs += '--silent' }
 
     if ($winGetArgs -contains '--nonadmin') {
         Write-Host "Running in non-admin mode for: $appId"
