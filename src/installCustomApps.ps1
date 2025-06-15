@@ -79,13 +79,12 @@ foreach ($app in $apps) {
         Write-Host "Running in non-admin mode for: $appId"
         $winGetArgs = $winGetArgs | Where-Object { $_ -ne '--nonadmin' }
         $winGetCommand = "winget $( $winGetArgs -join ' ' )"
-        $PSCommand = "powershell `"${winGetCommand}`""
 
-        # Use `runas` instead of `ShellExecute` to run in non-admin mode.
-        # When using PowerShell 7.5 (not the more commonly installed 5.1), `ShellExecute` inherits elevation from the
-        # parent process, even when the child is 5.1. This works in both PowerShell 5.1 and 7.5.
+        # Create a new PowerShell process with `runas` instead of `ShellExecute` to run in non-admin mode.
+        # Running the script with PowerShell 7.5 (not the more commonly installed 5.1), `ShellExecute` inherits
+        # elevation from the parent process, even when the child is 5.1. This works in both PowerShell 5.1 and 7.5.
         # https://www.reddit.com/r/sysadmin/comments/16kw85h/comment/k0ymmdo/
-        runas /trustlevel:0x20000 $PSCommand
+        runas /trustlevel:0x20000 "PowerShell `"${winGetCommand}`""
 
         continue
     }
