@@ -25,6 +25,6 @@ if ($feature.State -eq 'Enabled') {
 }
 else {
     Write-Host 'Enabling Windows Sandbox...'
-    Enable-WindowsOptionalFeature -Online -FeatureName 'Containers-DisposableClientVM' -All -NoRestart
+    Enable-WindowsOptionalFeature -Online -FeatureName 'Containers-DisposableClientVM' -All -NoRestart | Out-Null
     Write-Host '✅ Successfully enabled Windows Sandbox. Please restart the system to complete the process.' -ForegroundColor 'green'
 }
