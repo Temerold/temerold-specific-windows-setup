@@ -13,6 +13,7 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 
 $apps = @(
     '7zip.7zip',
+    'AntibodySoftware.WizTree',
     'Audacity.Audacity',
     'AudioRangerIT.AudioRanger',
     @( 'Blizzard.BattleNet', '--location', 'C:\Program Files (x86)\Battle.net' ),
@@ -53,7 +54,6 @@ $apps = @(
     'undergroundwires.privacy.sexy',
     'Valve.Steam',
     'VideoLAN.VLC',
-    'WinDirStat.WinDirStat',
     'yt-dlp.yt-dlp'
 )
 
