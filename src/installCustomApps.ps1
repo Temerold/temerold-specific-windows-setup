@@ -75,7 +75,21 @@ foreach ($app in $apps) {
     ) + $additionalWinGetArgs
     if ($silent) { $winGetArgs += '--silent' }
 
-    winget @winGetArgs
+    if ($winGetArgs -contains '--nonadmin') {
+        Write-Host "Running in non-admin mode for: $appId"
+        $winGetArgs = $winGetArgs | Where-Object { $_ -ne '--nonadmin' }
+        $winGetCommand = "winget $( $winGetArgs -join ' ' )"
+        $PSCommand = "powershell `"${winGetCommand}`""
+
+        # Use `runas` instead of `ShellExecute` to run in non-admin mode.
+        # When using PowerShell 7.5 (not the more commonly installed 5.1), `ShellExecute` inherits elevation from the
+        # parent process, even when the child is 5.1. This works in both PowerShell 5.1 and 7.5.
+        # https://www.reddit.com/r/sysadmin/comments/16kw85h/comment/k0ymmdo/
+        runas /trustlevel:0x20000 $PSCommand
+
+        continue
+    }
+    else { winget @winGetArgs }
 
     if ($LASTEXITCODE -ne 0) { Write-Error "Failed to install: $appId" }
     else { Write-Host "Successfully installed: $appId" }
