@@ -7,6 +7,8 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 
 - Always expand taskbar
 
+- Apply custom mouse pointer speed and lines to srcoll at a time
+
 - Apply custom taskbar items
 
 - Create main script incorporating everything in an appropriate order
