@@ -87,7 +87,7 @@ foreach ($app in $apps) {
         # Running the script with PowerShell 7.5 (not the more commonly installed 5.1), `ShellExecute` inherits
         # elevation from the parent process, even when the child is 5.1. This works in both PowerShell 5.1 and 7.5.
         # https://www.reddit.com/r/sysadmin/comments/16kw85h/comment/k0ymmdo/
-        runas /trustlevel:0x20000 "PowerShell `"${winGetCommand}`""
+        runas /trustlevel:0x20000 "powershell `"${winGetCommand}`""
 
         continue
     }
