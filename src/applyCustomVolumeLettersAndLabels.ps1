@@ -28,11 +28,11 @@ ForEach ($volume in $volumes) {
 
     if ($currentLetter -ne $volume['Letter']) {
         Set-Partition -DriveLetter $currentLetter -NewDriveLetter $volume['Letter']
-        Write-Host "✅ Changed volume $( $volume['DeviceId'] ) letter from $currentLetter to $( $volume['Letter'] )" -ForegroundColor "green"
+        Write-Host "✅ Changed volume $( $volume['DeviceId'] ) letter from $currentLetter to $( $volume['Letter'] )" -ForegroundColor Green
     }
 
     if ($currentLabel -ne $volume['Label']) {
         Set-Volume -UniqueId $volumeInstance.DeviceID -NewFileSystemLabel $volume['Label']
-        Write-Host "✅ Changed volume $( $volume['DeviceId'] ) label from $currentLabel to $( $volume['Label'] )" -ForegroundColor "green"
+        Write-Host "✅ Changed volume $( $volume['DeviceId'] ) label from $currentLabel to $( $volume['Label'] )" -ForegroundColor Green
     }
 }
