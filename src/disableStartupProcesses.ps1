@@ -13,7 +13,7 @@ foreach ($key in $runKeys) {
             if ($property.Name -in @('PSPath', 'PSParentPath', 'PSChildName', 'PSDrive', 'PSProvider')) { continue }
             try {
                 Remove-ItemProperty -Path $key -Name $property.Name
-                Write-Host "Disabled startup process: $( $property.Name )"
+                Write-Host "✅ Disabled startup process: $( $property.Name )" -Foregroundcolor Green
             }
             catch {
                 Write-Error "Could not disable startup process: $( $property.Name )"
@@ -45,7 +45,7 @@ foreach ($dir in $startupDirs) {
                 Write-Error "Could not disable startup process: $( $_.Name )"
                 continue
             }
-            Write-Host "Disabled startup process: $( $_.Name )"
+            Write-Host "✅ Disabled startup process: $( $_.Name )" -Foregroundcolor Green
         }
     }
 }

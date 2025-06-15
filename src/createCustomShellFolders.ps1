@@ -19,3 +19,5 @@ foreach ($propertyName in $desktopIcons) {
 }
 
 Stop-Process -Name 'Explorer'
+
+Write-Host '✅ Created custom shell folders on desktop' -Foregroundcolor Green
