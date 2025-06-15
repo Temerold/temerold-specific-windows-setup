@@ -40,6 +40,7 @@ $apps = @(
     'Modrinth.ModrinthApp',
     'Mojang.MinecraftLauncher',
     'Mozilla.Firefox',
+    'MusicBrainz.Picard',
     'OBSProject.OBSStudio',
     'OpenJS.NodeJS',
     'Oracle.VirtualBox',
