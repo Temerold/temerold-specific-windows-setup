@@ -19,8 +19,6 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 
 - Enable Explorer preview pane
 
-- Make `--silent` a parameter with default value `$true`
-
 - Rename the computer
 
 - Replace Explorer libraries with Lagring directories
