@@ -33,7 +33,7 @@ $apps = @(
     'KeePassXCTeam.KeePassXC',
     'Klocman.BulkCrapUninstaller',
     'LibreWolf.LibreWolf',
-    'Microsoft.Powershell',
+    'Microsoft.PowerShell',
     'Microsoft.Sysinternals',
     @(  'Microsoft.VisualStudioCode',
         '--override',
