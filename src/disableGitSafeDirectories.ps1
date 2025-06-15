@@ -1,4 +1,4 @@
 ### Disable Git safe directories
 
 git config --global --add safe.directory '*'
-Write-Host '✅ Added Git safe directory: *' -Foregroundcolor Green
+Write-Host '✅ Added Git safe directory: *' -ForegroundColor "green"

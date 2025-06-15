@@ -1,4 +1,4 @@
 ### Disable hibernation
 
 powercfg.exe /hibernate off
-Write-Host '✅ Diabled hibernation' -Foregroundcolor Green
+Write-Host '✅ Diabled hibernation' -ForegroundColor "green"

@@ -5,4 +5,4 @@ $base64 = 'AAAAAAAAAAAAAAAAAAAAAAMAAQABAAEACwAAAAAAAAAsAAAAAAAAADoAOgB7ADIAMABEA
 $bytes = [Convert]::FromBase64String($base64)
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop' -Name 'IconLayouts' -Value $bytes -Force
 Stop-Process -Name 'Explorer'
-Write-Host '✅ Applied custom desktop icon layout' -Foregroundcolor Green
+Write-Host '✅ Applied custom desktop icon layout' -ForegroundColor "green"

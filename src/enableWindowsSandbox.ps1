@@ -21,10 +21,10 @@ if (-not $feature) {
 
 # Enable if not already enabled
 if ($feature.State -eq 'Enabled') {
-    Write-Host '✅ Windows Sandbox is already enabled.' -Foregroundcolor Green
+    Write-Host '✅ Windows Sandbox is already enabled.' -ForegroundColor "green"
 }
 else {
     Write-Host 'Enabling Windows Sandbox...'
     Enable-WindowsOptionalFeature -Online -FeatureName 'Containers-DisposableClientVM' -All -NoRestart
-    Write-Host '✅ Successfully enabled Windows Sandbox. Please restart the system to complete the process.' -Foregroundcolor Green
+    Write-Host '✅ Successfully enabled Windows Sandbox. Please restart the system to complete the process.' -ForegroundColor "green"
 }
