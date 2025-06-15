@@ -91,8 +91,17 @@ foreach ($app in $apps) {
 
         continue
     }
-    else { winget @winGetArgs }
+    winget @winGetArgs
 
-    if ($LASTEXITCODE -ne 0) { Write-Error "Failed to install: $appId" }
-    else { Write-Host "✅ Successfully installed: $appId"  -ForegroundColor 'green' }
+    # https://github.com/microsoft/winget-cli/blob/master/doc/windows/package-manager/winget/returnCodes.md
+    # Exit code -1978335189 means that the app is already installed and has no available update.
+    # Exit code -1978334956 means that the app is already installed but can't be upgraded by WinGet itself.
+    # `Discord.Discord`, for example, exits with the message "The package cannot be upgraded using winget. Please
+    # use the method provided by the publisher for upgrading this package."
+    # Both exit codes imply that the app already is installed:
+    if ( $LASTEXITCODE -in @(-1978335189, -1978334956) ) {
+        Write-Host "✅ Already successfully installed: $appId" -ForegroundColor 'green'
+    }
+    elseif ( $LASTEXITCODE -eq 0 ) { Write-Host "✅ Successfully installed: $appId" -ForegroundColor 'green' }
+    else { Write-Error "❌ Failed to install with exit code $( $LASTEXITCODE ): $appId" }
 }
