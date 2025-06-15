@@ -93,5 +93,5 @@ foreach ($app in $apps) {
     else { winget @winGetArgs }
 
     if ($LASTEXITCODE -ne 0) { Write-Error "Failed to install: $appId" }
-    else { Write-Host "✅ Successfully installed: $appId"  -ForegroundColor Green }
+    else { Write-Host "✅ Successfully installed: $appId"  -ForegroundColor 'green' }
 }

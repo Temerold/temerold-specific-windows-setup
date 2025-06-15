@@ -8,7 +8,7 @@ if ($edition -notin @('Professional', 'Enterprise', 'Education')) {
 }
 
 # Check if virtualization is enabled
-if (-not (Get-CimInstance Win32_ComputerSystem | Select-Object -ExpandProperty HypervisorPresent)) {
+if (-not (Get-CimInstance 'Win32_ComputerSystem' | Select-Object -ExpandProperty 'HypervisorPresent')) {
     Write-Warning 'Virtualization is not enabled. Please enable virtualization (VT-x / AMD-V) in your BIOS/UEFI settings.'
 }
 
@@ -21,10 +21,10 @@ if (-not $feature) {
 
 # Enable if not already enabled
 if ($feature.State -eq 'Enabled') {
-    Write-Host '✅ Windows Sandbox is already enabled.' -ForegroundColor Green
+    Write-Host '✅ Windows Sandbox is already enabled.' -ForegroundColor 'green'
 }
 else {
     Write-Host 'Enabling Windows Sandbox...'
     Enable-WindowsOptionalFeature -Online -FeatureName 'Containers-DisposableClientVM' -All -NoRestart
-    Write-Host '✅ Successfully enabled Windows Sandbox. Please restart the system to complete the process.' -ForegroundColor Green
+    Write-Host '✅ Successfully enabled Windows Sandbox. Please restart the system to complete the process.' -ForegroundColor 'green'
 }
