@@ -2,6 +2,6 @@
 
 Stop-Process -Name 'Explorer'
 $desktopIconLayout = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop').IconLayouts
-$b64 = [Convert]::ToBase64String($desktopIconLayout)
-Set-Content -Value $b64 -Path '.\CustomIconLayout.b64'
-Write-Host $b64
+$base64 = [Convert]::ToBase64String($desktopIconLayout)
+Set-Content -Value $base64 -Path '.\CustomIconLayout.b64'
+Write-Host $base64
