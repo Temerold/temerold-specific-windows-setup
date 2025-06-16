@@ -46,7 +46,6 @@ $apps = @(
     'OBSProject.OBSStudio',
     'OpenJS.NodeJS',
     'Oracle.VirtualBox',
-    'PeterPawlowski.foobar2000',
     'Python.Python.3.13',
     'qBittorrent.qBittorrent',
     'RARLab.WinRAR',
