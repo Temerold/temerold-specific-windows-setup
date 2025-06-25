@@ -12,6 +12,7 @@
     "enableWindowsSandbox.ps1",
     "disableHibernation.ps1",
     "installMicrosoftOffice.ps1",
-    "addCustomDirectoryToPath.ps1"
+    "addCustomDirectoryToPath.ps1",
+    "vscode"
   ]
 }
