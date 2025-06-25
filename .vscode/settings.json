@@ -1,0 +1,17 @@
+{
+  "conventionalCommits.scopes": [
+    "readme",
+    "addCustomShortcutsToDesktop.ps1",
+    "applyCustomDesktopIconLayout.ps1",
+    "saveDesktopIconLayout.ps1",
+    "addCustomGitIdentity.ps1",
+    "installCustomApps.ps1",
+    "PowerShell",
+    "leftAlignTaskbar.ps1",
+    "removeTaskbarSearchBar.ps1",
+    "enableWindowsSandbox.ps1",
+    "disableHibernation.ps1",
+    "installMicrosoftOffice.ps1",
+    "addCustomDirectoryToPath.ps1"
+  ]
+}
