@@ -13,6 +13,7 @@
     "disableHibernation.ps1",
     "installMicrosoftOffice.ps1",
     "addCustomDirectoryToPath.ps1",
-    "vscode"
+    "vscode",
+    "enableTaskbarEndTask.ps1"
   ]
 }
