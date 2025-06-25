@@ -12,43 +12,43 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 }
 
 $apps = @(
-    '7zip.7zip',
-    'AntibodySoftware.WizTree',
-    'Audacity.Audacity',
-    'AudioRangerIT.AudioRanger',
-    @( 'Blizzard.BattleNet', '--location', 'C:\Program Files (x86)\Battle.net' ),
-    'BoanAnbo.ZoteroCitationPicker',
-    'calibre.calibre',
-    'CrystalDewWorld.CrystalDiskInfo',
-    'CrystalDewWorld.CrystalDiskMark',
-    'Discord.Discord',
-    'dotPDN.PaintDotNet',
-    'Duplicati.Duplicati',
-    'EpicGames.EpicGamesLauncher',
-    'Git.Git',
-    'GNU.Wget2',
-    'Google.Chrome',
-    'Gyan.FFmpeg',
-    'KDE.Kdenlive',
-    'KeePassXCTeam.KeePassXC',
-    'Klocman.BulkCrapUninstaller',
-    'LibreWolf.LibreWolf',
-    'Microsoft.PowerShell',
-    'Microsoft.Sysinternals',
-    @(  'Microsoft.VisualStudioCode',
-        '--override',
-        '/mergetasks=!runcode,addcontextmenufiles,addcontextmenufolders /verysilent'),
-    'MiniTool.PartitionWizard.Free',
-    'Modrinth.ModrinthApp',
-    'Mojang.MinecraftLauncher',
-    'Mozilla.Firefox',
-    'MusicBrainz.Picard',
-    'OBSProject.OBSStudio',
-    'OpenJS.NodeJS',
-    'Oracle.VirtualBox',
-    'Python.Python.3.13',
-    'qBittorrent.qBittorrent',
-    'RARLab.WinRAR',
+    #'7zip.7zip',
+    #'AntibodySoftware.WizTree',
+    #'Audacity.Audacity',
+    #'AudioRangerIT.AudioRanger',
+    #@( 'Blizzard.BattleNet', '--location', 'C:\Program Files (x86)\Battle.net' ),
+    #'BoanAnbo.ZoteroCitationPicker',
+    #'calibre.calibre',
+    #'CrystalDewWorld.CrystalDiskInfo',
+    #'CrystalDewWorld.CrystalDiskMark',
+    #'Discord.Discord',
+    #'dotPDN.PaintDotNet',
+    #'Duplicati.Duplicati',
+    #'EpicGames.EpicGamesLauncher',
+    #'Git.Git',
+    #'GNU.Wget2',
+    #'Google.Chrome',
+    #'Gyan.FFmpeg',
+    #'KDE.Kdenlive',
+    #'KeePassXCTeam.KeePassXC',
+    #'Klocman.BulkCrapUninstaller',
+    #'LibreWolf.LibreWolf',
+    #'Microsoft.PowerShell',
+    #'Microsoft.Sysinternals',
+    #@(  'Microsoft.VisualStudioCode',
+    #    '--override',
+    #    '/mergetasks=!runcode,addcontextmenufiles,addcontextmenufolders /verysilent'),
+    #'MiniTool.PartitionWizard.Free',
+    #'Modrinth.ModrinthApp',
+    #'Mojang.MinecraftLauncher',
+    #'Mozilla.Firefox',
+    #'MusicBrainz.Picard',
+    #'OBSProject.OBSStudio',
+    #'OpenJS.NodeJS',
+    #'Oracle.VirtualBox',
+    #'Python.Python.3.13',
+    #'qBittorrent.qBittorrent',
+    #'RARLab.WinRAR',
     @('Spotify.Spotify', '--nonadmin'),
     'undergroundwires.privacy.sexy',
     'Valve.Steam',
@@ -83,10 +83,22 @@ foreach ($app in $apps) {
         $winGetCommand = "winget $( $winGetArgs -join ' ' )"
 
         # Create a new PowerShell process with `runas` instead of `ShellExecute` to run in non-admin mode.
-        # Running the script with PowerShell 7.5 (not the more commonly installed 5.1), `ShellExecute` inherits
-        # elevation from the parent process, even when the child is 5.1. This works in both PowerShell 5.1 and 7.5.
-        # https://www.reddit.com/r/sysadmin/comments/16kw85h/comment/k0ymmdo/
-        runas /trustlevel:0x20000 "powershell `"${winGetCommand}`""
+        # When ran with PowerShell 7.5 (not the more commonly installed 5.1), `ShellExecute` inherits elevation
+        # from the parent process, even when the child is 5.1, thus the use of `runas`, which works in
+        # both versions. https://www.reddit.com/r/sysadmin/comments/16kw85h/comment/k0ymmdo/
+        #
+        # FURTHERMORE, due to a known bug not fixed until PowerShell 7.3.0 when passing embedded quotes in
+        # arguments passed to external programs, double quotes (") can't be escaped using double quotes (" -> "").
+        # Instead, we have to use backslashes (\) AND double quotes. However, this hotfix doesn't work in versions
+        # >= 7.3.0, and so we have to use `$PSNativeCommandArgumentPassing = 'Legacy'` to make sure that all
+        # versions handles it as the old, incorrect ones would.
+        # https://stackoverflow.com/questions/24745868/powershell-passing-json-string-to-curl/66837948#66837948
+        # https://stackoverflow.com/questions/74440303/powershell-7-3-0-breaking-command-invocation/74440425#74440425
+        # https://stackoverflow.com/questions/59036580/pwsh-command-is-removing-quotation-marks/59036879#59036879
+        # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.5#psnativecommandargumentpassing
+        $PSNativeCommandArgumentPassing = 'Legacy'
+        runas /trustlevel:0x20000 "powershell -Command \""$winGetCommand\"""
+
 
         continue
     }
