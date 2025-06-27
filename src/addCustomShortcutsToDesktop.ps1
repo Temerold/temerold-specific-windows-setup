@@ -10,7 +10,7 @@ $desktopPath = [System.Environment]::GetFolderPath('Desktop')
 $lagringPath = 'S:\'
 $lagringShortcuts = @(
     @{  Name   = 'Lagring'
-        Target = $lagringPath 
+        Target = $lagringPath
     },
     @{  Name   = 'Program'
         Target = Join-Path -Path $lagringPath -ChildPath 'Program'
