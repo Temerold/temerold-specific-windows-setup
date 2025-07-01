@@ -39,7 +39,7 @@ set "powershell=pwsh"
 %powershell% -File src\showHiddenFiles.ps1
 : %powershell% -File src\showSuperHiddenFiles.ps1
 
-taskkill /f /im explorer
+taskkill /f /im explorer.exe
 explorer
 
 
