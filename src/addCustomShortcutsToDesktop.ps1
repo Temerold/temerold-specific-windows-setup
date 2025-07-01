@@ -45,7 +45,7 @@ foreach ($shortcut in $lagringShortcuts) {
 
     # Continue if the shortcut already exists with the same target
     if ((Test-Path -Path $shortcutPath) -and ($shortcutObject.TargetPath -eq $shortcut.Target)) {
-        Write-Host "Shortcut already exists: $( $shortcut.Name ) -> $( $shortcut.Target )"
+        Write-Host "✅ Shortcut already exists: $( $shortcut.Name ) -> $( $shortcut.Target )" -ForegroundColor 'green'
         continue
     }
 
@@ -53,5 +53,5 @@ foreach ($shortcut in $lagringShortcuts) {
     $shortcutObject.TargetPath = $shortcut.Target
     $shortcutObject.Save()
 
-    Write-Host "Created shortcut: $( $shortcut.Name ) -> $( $shortcut.Target )"
+    Write-Host "✅ Created shortcut: $( $shortcut.Name ) -> $( $shortcut.Target )" -ForegroundColor 'green'
 }
