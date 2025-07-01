@@ -18,6 +18,6 @@ foreach ($propertyName in $desktopIcons) {
     Set-ItemProperty -Path $registryPath -Name $propertyName -Value 0 -Force
 }
 
-Stop-Process -Name 'Explorer'
+Stop-Process -Name 'Explorer' | Out-Null
 
 Write-Host '✅ Created custom shell folders on desktop' -ForegroundColor 'green'

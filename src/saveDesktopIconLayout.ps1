@@ -1,6 +1,6 @@
 ### Save desktop icon layout
 
-Stop-Process -Name 'Explorer'
+Stop-Process -Name 'Explorer' | Out-Null
 $desktopPath = [Environment]::GetFolderPath('Desktop')
 Remove-Item (Join-Path $desktopPath 'desktop.ini')
 $desktopIconLayout = (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop').IconLayouts
