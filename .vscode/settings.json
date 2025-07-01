@@ -6,6 +6,7 @@
     "applyCustomDesktopIconLayout.ps1",
     "disableHibernation.ps1",
     "disableTaskbarItemCombiningForMainTaskbar.ps1",
+    "disableTaskbarItemCombiningForSecondaryTaskbars.ps1",
     "disableTaskbarTaskView.ps1",
     "enableTaskbarEndTask.ps1",
     "enableWindowsSandbox.ps1",
