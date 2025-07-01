@@ -6,5 +6,5 @@ if ($PSVersionTable.PSVersion.Major -lt 7) {
     exit 1
 }
 
-Start-Process 'S:\Övrigt\OfficeSetup.exe' -Wait
+Start-Process 'S:\Övrigt\OfficeSetup.exe'
 Write-Host "✅ Installed Microsoft Office"
