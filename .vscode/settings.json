@@ -5,6 +5,7 @@
     "addCustomShortcutsToDesktop.ps1",
     "applyCustomDesktopIconLayout.ps1",
     "disableHibernation.ps1",
+    "disableTaskbarTaskView.ps1",
     "enableTaskbarEndTask.ps1",
     "enableWindowsSandbox.ps1",
     "installCustomApps.ps1",
