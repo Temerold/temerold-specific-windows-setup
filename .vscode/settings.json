@@ -10,7 +10,7 @@
     "installCustomApps.ps1",
     "installMicrosoftOffice.ps1",
     "leftAlignTaskbar.ps1",
-    "PowerShell",
+    "ps",
     "readme",
     "removeTaskbarSearchBar.ps1",
     "saveDesktopIconLayout.ps1",
