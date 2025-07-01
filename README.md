@@ -3,15 +3,10 @@
 This is a collection of PowerShell scripts that can be used to automate a Windows 11 post-installation setup. The scripts are, and will be for the foreseeable future, customized for my personal use. However, I hope that they can be useful to others as well.
 
 ## TODO
-- Add `S:\Program\PATH` to path
-
-- Always expand taskbar
 
 - Apply custom mouse pointer speed and lines to srcoll at a time
 
 - Apply custom taskbar items
-
-- Create main script incorporating everything in an appropriate order
 
 - Customize lock screen
 
@@ -22,8 +17,6 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 - Rename the computer
 
 - Replace Explorer libraries with Lagring directories
-
-- Run Office installer
 
 - Set power mode to "Best Performance"
 
