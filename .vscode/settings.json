@@ -4,6 +4,7 @@
     "addCustomGitIdentity.ps1",
     "addCustomShortcutsToDesktop.ps1",
     "applyCustomDesktopIconLayout.ps1",
+    "applyCustomDeviceName.ps1",
     "disableHibernation.ps1",
     "disableTaskbarItemCombiningForMainTaskbar.ps1",
     "disableTaskbarItemCombiningForSecondaryTaskbars.ps1",
