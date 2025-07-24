@@ -7,7 +7,12 @@ echo Installing Microsoft.PowerShell...
 winget install --id Microsoft.PowerShell --exact --accept-source-agreements --accept-package-agreements --verbose-logs
 
 set "powershell=pwsh"
-: set "powershell=powershell" : Uncomment this line if you want to use the built-in PowerShell where possible
+where pwsh /q
+if %errorlevel% neq 0 (
+    echo "PowerShell 7 not found. Falling back on built-in PowerShell, although function might be limited..."
+    set "powershell=powershell"
+)
+
 :: 1. App installation and uninstallation
 %powershell% -File src\installCustomApps.ps1
 : pwsh -File src\installMicrosoftOffice.ps1
