@@ -15,7 +15,6 @@ if %errorlevel% neq 0 (
 
 :: 1. App installation and uninstallation
 %powershell% -File src\installCustomApps.ps1
-: pwsh -File src\installMicrosoftOffice.ps1
 %powershell% -File src\uninstallCustomApps.ps1
 
 

@@ -12,7 +12,6 @@
     "enableTaskbarEndTask.ps1",
     "enableWindowsSandbox.ps1",
     "installCustomApps.ps1",
-    "installMicrosoftOffice.ps1",
     "launcher",
     "leftAlignTaskbar.ps1",
     "ps",
