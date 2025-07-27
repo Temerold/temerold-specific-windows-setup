@@ -1,6 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "addCustomDirectoryToPath.ps1",
+    "addCustomDirectoriesToPath.ps1",
     "addCustomGitIdentity.ps1",
     "addCustomShortcutsToDesktop.ps1",
     "applyCustomDesktopIconLayout.ps1",
