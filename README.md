@@ -10,11 +10,7 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 
 - Customize lock screen
 
-- Delete OneDrive
-
 - Enable Explorer preview pane
-
-- Rename the computer
 
 - Replace Explorer libraries with Lagring directories
 
@@ -25,7 +21,3 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 - Set up `winget upgrade --all` as a cron job
 
 - Set up Duplicati backup
-
-- Standardize use of `-in` and `-contains`
-
-- Sync system time
