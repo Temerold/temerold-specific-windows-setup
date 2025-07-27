@@ -77,8 +77,8 @@ foreach ($app in $apps) {
     ) + $additionalWinGetArgs
     if (-not $loud) { $winGetArgs += '--silent' }
 
-    $isElevated = [System.Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains "S-1-5-32-544"
-    if ($winGetArgs -contains '--nonadmin' -and $isElevated) {
+    $isElevated = "S-1-5-32-544" -in [System.Security.Principal.WindowsIdentity]::GetCurrent().Groups
+    if ('--nonadmin' -in $winGetArgs -and $isElevated) {
         Write-Host "Running in non-admin mode for: $appId"
         $winGetArgs = $winGetArgs | Where-Object { $_ -ne '--nonadmin' }
         $winGetCommand = "winget $( $winGetArgs -join ' ' )"
