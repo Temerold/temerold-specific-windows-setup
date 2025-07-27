@@ -19,7 +19,7 @@ $volumes = @(
     }
 )
 
-ForEach ($volume in $volumes) {
+foreach ($volume in $volumes) {
     $volumeInstance = Get-CimInstance -ClassName 'Win32_Volume' | Where-Object {
         $_.DeviceID -eq $volume['DeviceId']
     }
