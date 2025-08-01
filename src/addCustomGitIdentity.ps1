@@ -1,8 +1,11 @@
 ### Add custom Git identity
 
-git config --global user.name 'Temerold'
-Write-Host '✅ Set Git user.name to ''Temerold''' -ForegroundColor 'green'
+$username = ''
+$email = ''
 
-git config --global user.email 'tobbe@temerold.se'
-Write-Host '✅ Set Git user.email to ''tobbe@temerold.se''' -ForegroundColor 'green'
+git config --global user.name $username
+Write-Host "✅ Set Git user.name to '$username'" -ForegroundColor 'green'
+
+git config --global user.email $email
+Write-Host "✅ Set Git user.email to '$email'" -ForegroundColor 'green'
 # TODO: Add Git user.signingkey
