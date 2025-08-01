@@ -1,5 +1,10 @@
 ### Add custom Git identity
 
+if (-not (Get-Command 'git' -ErrorAction SilentlyContinue)) {
+    Write-Error 'Git not found. Git identity not changed.'
+    exit 1
+}
+
 $username = ''
 $email = ''
 
