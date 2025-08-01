@@ -20,4 +20,4 @@ foreach ($propertyName in $desktopIcons) {
 
 Stop-Process -Name 'Explorer' | Out-Null
 
-Write-Host '✅ Created custom shell folders on desktop' -ForegroundColor 'green'
+Write-Host '✅ Created custom shell folders on desktop' -ForegroundColor Green

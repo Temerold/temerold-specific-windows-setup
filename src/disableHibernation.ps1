@@ -5,4 +5,4 @@ if ( Test-Path 'C:\hiberfil.sys' ) {
     Write-Error 'Could not disable hibernation'
     exit 1
 }
-Write-Host '✅ Successfully disabled hibernation' -ForegroundColor 'green'
+Write-Host '✅ Successfully disabled hibernation' -ForegroundColor Green

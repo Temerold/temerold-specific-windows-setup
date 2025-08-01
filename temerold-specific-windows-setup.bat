@@ -1,7 +1,7 @@
 @echo off
 cd /d "%~dp0"
 
-powershell -Command "Write-Host 'Starting Temerold-specific Windows setup' -ForegroundColor 'cyan'"
+powershell -Command "Write-Host 'Starting Temerold-specific Windows setup' -ForegroundColor Cyan"
 
 echo Installing Microsoft.PowerShell...
 winget install --id Microsoft.PowerShell --exact --accept-source-agreements --accept-package-agreements --verbose-logs

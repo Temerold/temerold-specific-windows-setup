@@ -116,8 +116,8 @@ foreach ($app in $apps) {
     # use the method provided by the publisher for upgrading this package."
     # Both exit codes imply that the app already is installed:
     if ( $LASTEXITCODE -in @(-1978335189, -1978334956) ) {
-        Write-Host "✅ Already successfully installed: $appId" -ForegroundColor 'green'
+        Write-Host "✅ Already successfully installed: $appId" -ForegroundColor Green
     }
-    elseif ( $LASTEXITCODE -eq 0 ) { Write-Host "✅ Successfully installed: $appId" -ForegroundColor 'green' }
+    elseif ( $LASTEXITCODE -eq 0 ) { Write-Host "✅ Successfully installed: $appId" -ForegroundColor Green }
     else { Write-Error "❌ Failed to install with exit code $( $LASTEXITCODE ): $appId" }
 }
