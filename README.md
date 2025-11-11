@@ -4,7 +4,7 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 
 ## TODO
 
-- Apply custom mouse pointer speed and lines to srcoll at a time
+- Apply custom mouse pointer speed and lines to scroll at a time
 
 - Apply custom taskbar items
 
@@ -14,10 +14,22 @@ This is a collection of PowerShell scripts that can be used to automate a Window
 
 - Replace Explorer libraries with Lagring directories
 
-- Set power mode to "Best Performance"
+- Set power mode to “Best Performance”
 
 - Set screen timeout to more than 5 minutes
 
-- Set up `winget upgrade --all` as a cron job
+- Set up winget upgrade --all as a cron job
 
 - Set up Duplicati backup
+
+- Choose AutoPlay default for removable drives and memory cards
+
+- Standardize use of parameter names
+
+- Clean context menu (Sophia?)
+
+- Configure slideshow wallpaper rotation via PowerShell
+
+- Evaluate and apply privacy/security utilities
+
+- Harden network and browser setup (Pi-hole, LibreWolf, etc.)
