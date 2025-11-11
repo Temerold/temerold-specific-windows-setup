@@ -6,11 +6,19 @@ powershell -Command "Write-Host 'Starting Temerold-specific Windows setup' -Fore
 echo Installing Microsoft.PowerShell...
 winget install --id Microsoft.PowerShell --exact --accept-source-agreements --accept-package-agreements --verbose-logs
 
+:: Manually add PowerShell 7 to PATH if it's not already there
+set "PWSH_PATH=%ProgramFiles%\PowerShell\7"
+if exist "%PWSH_PATH%\pwsh.exe" (
+    set "PATH=%PWSH_PATH%;%PATH%"
+)
+
 set "powershell=pwsh"
 where pwsh /q
 if %errorlevel% neq 0 (
-    echo "PowerShell 7 not found. Falling back on built-in PowerShell, although function might be limited..."
+    echo PowerShell 7 not found. Falling back on built-in PowerShell, although function might be limited...
     set "powershell=powershell"
+) else (
+    echo PowerShell 7 found. Proper functionality can be expected...
 )
 
 :: 1. App installation and uninstallation
@@ -20,8 +28,8 @@ if %errorlevel% neq 0 (
 
 :: 1. Non-interfering
 %powershell% -File src\applyCustomDpiScaling.ps1
-: %powershell% -File src\addCustomDirectoryToPath.ps1
-: %powershell% -File src\applyCustomVolumeLettersAndLabels.ps1
+%powershell% -File src\addCustomDirectoriesToPath.ps1
+%powershell% -File src\applyCustomVolumeLettersAndLabels.ps1
 %powershell% -File src\disableHibernation.ps1
 %powershell% -File src\disableTaskbarItemCombiningForMainTaskbar.ps1
 %powershell% -File src\disableTaskbarItemCombiningForSecondaryTaskbars.ps1
@@ -41,7 +49,7 @@ if %errorlevel% neq 0 (
 %powershell% -File src\enableCheckBoxes.ps1
 %powershell% -File src\showFileExtensions.ps1
 %powershell% -File src\showHiddenFiles.ps1
-: %powershell% -File src\showSuperHiddenFiles.ps1
+%powershell% -File src\showSuperHiddenFiles.ps1
 
 taskkill /f /im explorer.exe
 explorer
