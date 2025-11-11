@@ -6,7 +6,7 @@ powershell -Command "Write-Host 'Starting Temerold-specific Windows setup' -Fore
 echo Installing Microsoft.PowerShell...
 winget install --id Microsoft.PowerShell --exact --accept-source-agreements --accept-package-agreements --verbose-logs
 
-:: Manually add PowerShell 7 to PATH if it's not already there
+:: Manually add PowerShell 7 to Path if it's not already there
 set "PWSH_PATH=%ProgramFiles%\PowerShell\7"
 if exist "%PWSH_PATH%\pwsh.exe" (
     set "PATH=%PWSH_PATH%;%PATH%"
